@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './styles.css'; 
+import './Weather.css'; 
 
 const Weather = () => {
   const [city, setCity] = useState("");
@@ -37,7 +37,7 @@ const Weather = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Enter city"
+            placeholder="Введите город"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
@@ -55,7 +55,7 @@ const Weather = () => {
           )}
           <div className="input-group-append">
             <button type="submit" className="btn btn-primary">
-              Get Weather
+              Узнать погоду
             </button>
           </div>
         </div>
@@ -63,8 +63,16 @@ const Weather = () => {
       {weatherData && (
         <div className="card">
           <div className="card-body">
-            <h3 className="card-title">Город: {weatherData.name}</h3>
-            <p className="card-text">Температура: {weatherData.main.temp}°C</p>
+            <h3 className="location">{weatherData.name}, {weatherData.sys.country}</h3>
+            <p className="temperature">{weatherData.main.temp}°C</p>
+            <p className="card-text" style={{ display: "inline-block" }}>
+              Погода: {weatherData.weather[0].description}
+            </p>
+            <img
+              src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+              style={{ display: "inline-block", marginLeft: "10px" }}
+              alt="Weather Icon"
+            />
             <p className="card-text">Влажность: {weatherData.main.humidity}%</p>
             <p className="card-text">
               Скорость ветра: {weatherData.wind.speed} м/с
@@ -81,14 +89,6 @@ const Weather = () => {
               Заход солнца:{" "}
               {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString()}
             </p>
-            <p className="card-text" style={{ display: "inline-block" }}>
-              Погода: {weatherData.weather[0].description}
-            </p>
-            <img
-              src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
-              style={{ display: "inline-block", marginLeft: "10px" }}
-              alt="Weather Icon"
-            />
           </div>
         </div>
       )}
