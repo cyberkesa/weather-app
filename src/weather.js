@@ -56,6 +56,7 @@ const Weather = () => {
           <div className="card-body">
             <h3 className="card-title">Город: {weatherData.name}</h3>
             <p className="card-text">Температура: {weatherData.main.temp}°C</p>
+            <img src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}/>
             <p className="card-text">Погода: {weatherData.weather[0].description}</p>
           </div>
         </div>
