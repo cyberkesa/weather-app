@@ -24,3 +24,23 @@
 .card-body {
 	margin: 10px;
 }
+
+.container {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	padding-bottom: 10px;
+  }
+  
+  .card {
+	margin-top: 20px;
+	width: 400px;
+	max-width: 100%;
+  }
+  
+  .input-form {
+	position: absolute;
+	bottom: 50px;
+  }
